@@ -7,4 +7,8 @@
 # Methods
 
 * **Google Hacking:** aka "dorking" which uses search engine to execute a more specific search [Exploit Database](https://www.exploit-db.com/google-hacking-database)
-* **Shodan:**
+* **Shodan:** Internet of things Search Engine where you can find out what services are running or devices used just by an IP address. There are filters to find routers, ftp servers etc. There is also anonymity with this tool. [Shodan](https://www.shodan.io/)
+* **TheHarvester:** This method come preinstalled on Kali [TheHarvester](https://www.kali.org/tools/theharvester/) A command line utility that queries multiple search engines at one time
+* **Metagoofil:** Another Command line utility that utilizes passive recon and is used to perform metadata analysis of public files [Metagoofil](https://www.kali.org/tools/metagoofil/)
+* **Whois:** Command line utility known as whois Access to domain owner or organization information lots of personal information can be found like addresses, email, phone numbers etc. [ICANN LOOKUP](https://lookup.icann.org/en)
+
