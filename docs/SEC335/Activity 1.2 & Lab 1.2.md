@@ -1,1 +1,0 @@
-Passive recon and tool usage
