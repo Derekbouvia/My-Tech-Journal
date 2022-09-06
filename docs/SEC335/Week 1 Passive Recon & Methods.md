@@ -30,9 +30,9 @@ Once linked its time to configure the virtual machine using wireguard, a VPN sol
 
 # Wireguard 
 
-- First run the command 
+- First run the command
 
-**Sudo apt install wireguard -y**
+  **Sudo apt install wireguard -y**
 
 - Once installed copy the provided wireguard config file to /etc/wireguard
 
