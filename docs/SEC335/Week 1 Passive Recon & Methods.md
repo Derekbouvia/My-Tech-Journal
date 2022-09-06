@@ -1,3 +1,7 @@
+# Reflection
+
+This week we have gone over the foundation of ethical hacking as well as talked about passive recon and methods that can be used to do so. We have been introduced to our environment as well as become familiar with the "Rules of engagement"
+
 # Passive Recon
 
 * Gathering information that is readily available to the public to obtain intelligence to a specific target this is also known as (OSINT) which means open source intelligence.
