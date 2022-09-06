@@ -16,3 +16,28 @@ This week we have gone over the foundation of ethical hacking as well as talked 
 * **Metagoofil:** Another Command line utility that utilizes passive recon and is used to perform metadata analysis of public files [Metagoofil](https://www.kali.org/tools/metagoofil/)
 * **Whois:** Command line utility known as whois Access to domain owner or organization information lots of personal information can be found like addresses, email, phone numbers etc. [ICANN LOOKUP](https://lookup.icann.org/en)
 
+# Kali Setup
+
+Instead of VPN we will be accessing our Kali system with Google remote desktop so that we can attack target networks. Once at the google remote desktop site it needs to be downloaded and add user account (avoid using school or personal account)
+
+
+
+# Google Remote Desktop
+
+[Google Remote Desktop](remotedesktop.google.come/access)
+
+![image-20220906004323865](C:\Users\derek.bouvia\AppData\Roaming\Typora\typora-user-images\image-20220906004323865.png)
+
+Once linked its time to configure the virtual machine using wireguard, a VPN solution.
+
+# Wireguard 
+
+- First run the command 
+
+- **Sudo apt install wireguard -y**
+
+- Once installed copy the provided wireguard config file to /etc/wireguard
+
+- Now run command **sudo wg-quick up wg0**
+
+  to create interface and set up connection
