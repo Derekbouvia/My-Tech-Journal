@@ -48,25 +48,23 @@ syslog is used for message logging
 
 ### Now that firewall is configured now the syslog service needs to be set up. To do this we need to edit the /etc/rsyslog.conf file so that it can accept remote logs. The following lines need to be uncommented.
 
+$ModLoad imtcp
 
-
-> # Provide UDP syslog reception
->
-> $MODlOAD imudp
->
-> $UDPServerRun 514
->
-> 
->
-> # Provides TCP syslog reception
->
-> $ModLoad imtcp
->
-> $InputTCPServerRun 514
+$UDPServerRun 514
 
 
 
+$ModLoad imtcp
 
+$InputTCPServerRun 514
+
+
+
+### Once this is done restart syslog server to apply changes with command
+
+
+
+systemctl restart rsyslog
 
 
 
