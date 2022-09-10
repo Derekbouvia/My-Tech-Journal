@@ -68,9 +68,7 @@ systemctl restart rsyslog
 
 
 
-### SYSLOG Client Setup
-
-
+## Syslog Client Setup
 
 Now, there needs to be a new file created in /etc/rsyslog.d/ and name it. In this case its sec350.conf 
 
@@ -81,6 +79,28 @@ user.notice @172.16.150.5
 The user portion indicate the syslog facility, the notice section indicated syslog priority, the single @ indicates traffic will be sent via UDP. If using TCP USE @@ 
 
 The final section, 172.16.50.5 indicates the ip address of the remote syslog server.
+
+Now we must restart the syslog service to apply with command
+
+
+
+systemctl restart rsyslog
+
+
+
+To test if logs are being sent to the server use command
+
+logger -t test TESTMESSAGE
+
+
+
+Make sure to use this command on test server*
+
+
+
+tail -f /var/log/messages
+
+
 
 
 
