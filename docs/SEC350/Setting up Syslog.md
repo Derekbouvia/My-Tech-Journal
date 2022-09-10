@@ -16,9 +16,9 @@ syslog is used for message logging
 
 
 
-Syslog uses TCP and UDP port 514 by default.
+### Syslog uses TCP and UDP port 514 by default.
 
-firewall commands to use are
+### firewall commands to use are
 
 
 
@@ -30,7 +30,7 @@ firewall commands to use are
 
 
 
-then reload
+### then reload
 
 
 
@@ -38,7 +38,7 @@ then reload
 
 
 
-to see if rules were created successfully use command
+### to see if rules were created successfully use command
 
 
 
