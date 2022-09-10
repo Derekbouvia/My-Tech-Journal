@@ -50,19 +50,19 @@ syslog is used for message logging
 
 
 
-> `# Provide UDP syslog reception
+> # Provide UDP syslog reception
 >
-> `$MODlOAD imudp
+> $MODlOAD imudp
 >
-> `$UDPServerRun 514
+> $UDPServerRun 514
 >
 > 
 >
-> `# Provides TCP syslog reception
+> # Provides TCP syslog reception
 >
-> `$ModLoad imtcp
+> $ModLoad imtcp
 >
-> `$InputTCPServerRun 514
+> $InputTCPServerRun 514
 
 
 
