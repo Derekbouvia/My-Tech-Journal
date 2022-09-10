@@ -68,3 +68,25 @@ systemctl restart rsyslog
 
 
 
+### SYSLOG Client Setup
+
+
+
+Now, there needs to be a new file created in /etc/rsyslog.d/ and name it. In this case its sec350.conf 
+
+In the file created type 
+
+user.notice @172.16.150.5
+
+The user portion indicate the syslog facility, the notice section indicated syslog priority, the single @ indicates traffic will be sent via UDP. If using TCP USE @@ 
+
+The final section, 172.16.50.5 indicates the ip address of the remote syslog server.
+
+
+
+
+
+
+
+
+
