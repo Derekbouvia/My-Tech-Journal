@@ -14,4 +14,4 @@ The purpose of this lab was to design a network for a school and build in packet
 | 1    | Management  | 250          | 10.2.10.0  | /24     | 10.2.10.1      |
 | 100  | FacStaff    | 200          | 10.2.11.0  | /24     | 10.2.11.1      |
 | 130  | Stulab1     | 35           | 10.2.12.0  | /26     | 10.2.12.1      |
-| 140  | Stulab2     | 35           | 10.2.12.64 | /26     | 10.2.13.1      |
+| 140  | Stulab2     | 35           | 10.2.12.64 | /26     | 10.2.12.65     |
