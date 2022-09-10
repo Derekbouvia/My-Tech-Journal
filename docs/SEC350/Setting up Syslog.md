@@ -6,7 +6,7 @@ syslog is used for message logging
 
 # Syslog Server Setup
 
-First, allow syslog traffic through firewall
+### First, allow syslog traffic through firewall
 
 On CentOS use command  to setup firewall rules
 
