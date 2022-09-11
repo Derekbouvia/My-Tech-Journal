@@ -15,3 +15,14 @@ The purpose of this lab was to design a network for a school and build in packet
 | 100  | FacStaff    | 200          | 10.7.11.0  | /24     | 10.2.11.1      |
 | 130  | Stulab1     | 35           | 10.7.12.0  | /26     | 10.2.12.1      |
 | 140  | Stulab2     | 35           | 10.7.12.64 | /26     | 10.2.12.65     |
+
+## Cisco Switch and Router Commands
+
+#### To Assign and Create VLANS on Switch
+
+`enable`
+
+
+
+
+
