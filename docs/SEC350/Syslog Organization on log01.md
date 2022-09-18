@@ -82,6 +82,12 @@ syslog is used for message logging
 
 `ping -c1 google.com`
 
+- REMINDER 
+
+  Make sure  mgmt-01 settings are set to manual and restart network
+
+
+
 
 
 ### Now that firewall is configured now the syslog service needs to be set up. To do this we need to edit the /etc/rsyslog.conf file so that it can accept remote logs. The following lines need to be uncommented.
