@@ -160,11 +160,111 @@ tail -f /var/log/messages
 
 
 
+### Syslog Organization on log01 updated Section
 
 
 
+## Configure mgmt01 for NAT and DNS Forwarding
 
+### Commands 
 
+`configure`
+
+`set nat source rule 15 description NAT from DMZ to LAN`
+
+`set nat source rule 15 outbound-interface eth0`
+
+`set nat source rule 15 source address 172.16.150.0/24`
+
+`set nat source rule 15 translation address masquerade`
+
+`commit`
+
+`save`
+
+## To check to see if setup is correct try pinging 8.8.8.8
+
+### Configure DNS Forwarding
+
+#### Tell fw01- to forward DNS Requests from DMZ Interface
+
+`set service dns forwarding listen-address 172.16.150.2`
+
+`set service dns forwarding allow-from 172.16.150.0/24`
+
+`set service dns forwarding system`
+
+`commit`
+
+`save`
+
+## To check to see if DNS is resolved ping google.com
+
+`ping -c1 google.com`
+
+- REMINDER 
+
+  Make sure  mgmt-01 settings are set to manual and restart network
+
+## Vyos prep
+
+* Change the vyod default password, do this BEFORE turning on SSH!
+
+* Go to fw01 vm and type:
+
+  
+
+Enter configure mode:**
+
+`configure`
+
+**Change Password: **
+
+ `set system login user [username] authentication plaintext-password [password]`
+
+## Enable SSH on the SEC350 WAN interface of vyos
+
+`configure`
+
+`set service ssh`
+
+`commit`
+
+`save`
+
+`exit`
+
+## Create an SSH Keypair on rw01
+
+* https://phoenixnap.com/kb/generate-setup-ssh-key-ubuntu
+
+  Go to log01 vm and type the following
+
+  * Step 1 - Generate the SSH Key Pair
+
+    `mkdir -p $HOME/.ssh`
+
+    `chmod 0700 $HOME/.ssh`
+
+    `ssh-keygen`
+
+    `/home/derek/.ssh/id_rsa`
+
+    `#(passphrase=password)`
+
+    Step 2 - Copy Public Key to the Ubuntu Server
+
+    `ip a`
+
+    `#ssh-copy-id derek@10.0.17.111`
+
+    Step 3 Log in to the Remote Server to log in to a remote server, input the comman:
+
+    `ssh derek@172.16.50.5`
+
+    
+
+    
 
 
 
