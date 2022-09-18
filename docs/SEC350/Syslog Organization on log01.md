@@ -86,7 +86,21 @@ syslog is used for message logging
 
   Make sure  mgmt-01 settings are set to manual and restart network
 
+## Vyos prep
 
+* Change the vyod default password, do this BEFORE turning on SSH!
+
+* Go to fw01 vm and type:
+
+  
+
+Enter configure mode:**
+
+`configure`
+
+**Change Password: **
+
+ `set system login user [username] authentication plaintext-password [password]`
 
 
 
