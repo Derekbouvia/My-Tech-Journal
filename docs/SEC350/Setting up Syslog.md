@@ -44,6 +44,44 @@ syslog is used for message logging
 
 **firewall-cmd --list-all**
 
+## Configure mgmt01 for NAT and DNS Forwarding
+
+### Commands 
+
+`configure`
+
+`set nat source rule 15 description NAT from DMZ to LAN`
+
+`set nat source rule 15 outbound-interface eth0`
+
+`set nat source rule 15 source address 172.16.150.0/24`
+
+`set nat source rule 15 translation address masquerade`
+
+`commit`
+
+`save`
+
+## To check to see if setup is correct try pinging 8.8.8.8
+
+### Configure DNS Forwarding
+
+#### Tell fw01- to forward DNS Requests from DMZ Interface
+
+`set service dns forwarding listen-address 172.16.150.2`
+
+`set service dns forwarding allow-from 172.16.150.0/24`
+
+`set service dns forwarding system`
+
+`commit`
+
+`save`
+
+## To check to see if DNS is resolved ping google.com
+
+`ping -c1 google.com`
+
 
 
 ### Now that firewall is configured now the syslog service needs to be set up. To do this we need to edit the /etc/rsyslog.conf file so that it can accept remote logs. The following lines need to be uncommented.
