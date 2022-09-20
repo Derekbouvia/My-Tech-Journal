@@ -10,11 +10,11 @@ We looked at scanning hosts to see if they were up using three command line util
 
 I used the bash script called pingsweep to ping ip's in the range of 10.0.5.2 - 10.0.5.50 which outputs a list of up ip addresses into a file called sweep.txt
 
-`#!/bin/bash`
-
-`for ip in $(sec 2 50); do`
-
-`ping -c 1 10.0.5.$ip | grep "bytes from" | awk '{print $4}' | cut -d ":" -f 1 done`
+```#!/bin/bash
+#!/bin/bash
+for ip in $(seq 2 50); do
+ping -c 1 10.0.5.$ip | grep "bytes from" | awk '{print $4}' | cut -d ":" -f 1 done
+```
 
 i then ran the command
 
@@ -31,4 +31,8 @@ I then tried to do the same thing with fping with this line
 I finally used Nmap which seemed like the best approach for conducting a scan. I sent the results of the Nmap scan to grep to see if the host is up and then that information is sent to awk so the ip address is removed and sent to sweep3.txt and below ive shown the code that I used to do so.
 
 `nmap -sn -n --vv 10.0.5.2-50 | grep -B 1 "Host is up" | awk '/Nmap/{print $5}' >> sweep3.txt`
+
+
+
+
 
