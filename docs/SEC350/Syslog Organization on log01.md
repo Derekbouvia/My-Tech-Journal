@@ -262,8 +262,44 @@ Enter configure mode:**
 
     `ssh derek@172.16.50.5`
 
-    
+    ### Server* 
 
+    ### Use the drop in file configuration to Augment syslog documentation
+    
+    To do this I ran the following commands below
+    
+    `nano /etc/rsyslog.conf`
+    
+    `cd /etc/rsyslog.d/`
+    
+    `wget https://raw.githubusercontent.com/gmcyber/sec350.conf`
+    
+    To check to see if the file has updated use cat command 
+    
+    ### Client*
+    
+    
+    
+    ### How to log authpriv messages on linux systems
+    
+    On web01 I updated the /etc/rsyslog.d/sec350 file.  Below is what i added to the file and then make sure to restart the service after making the change.
+    
+    `user.notice @172.16.50.5`
+    
+    `authpriv.* @172.16.50.5`
+    
+    ### Set up VyOS to send logs to syslog 
+    
+    to do so run the following commands listed below
+    
+    `configure`
+    
+    `set system syslog host 172.16.50.5 facility authpriv level info`
+    
+    `commit`
+    
+    `save`
+    
     
 
 
