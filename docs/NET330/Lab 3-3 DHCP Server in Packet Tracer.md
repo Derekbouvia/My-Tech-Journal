@@ -82,5 +82,55 @@ To set up routing I ran the command
 
 `ip routing`
 
-To configure the helpers
+The IP 10.6.6.2 is for the DHCP server in this environment. To configure the IP helpers for the DHCP server I ran the commands below.
+
+`interface vlan 20`
+
+`ip helper-address 10.6.6.2`
+
+`interface vlan 30`
+
+`ip helper-address 10.6.6.2`
+
+`interface vlan 40`
+
+`ip helper-address 10.6.6.2`
+
+`interface vlan 50`
+
+`ip helper-address 10.6.6.2`
+
+# DHCP
+
+To configure a server on a network to provide DHCP I selected End Devices then server and connected it in the network. Then Selected the server and then went to services. Then go to DHCP and configure the inputs as shown below.
+
+Interface `FastEthernet0` service `on`
+
+Pool name `serverPool`
+
+Default Gateway `10.6.6.1`
+
+DNS Server `0.0.0.0`
+
+Start IP Address  `10` `6` `6` `0` 
+
+Subnet Mask `255` `255` `255` `0` 
+
+Max Number of Users `150`
+
+TFTP Server: `0.0.0.0`
+
+WLC Address: `0.0.0.0`
+
+| Pool Name  | Default Gateway | DNS Server | Start IP Address | Subnet Mask   | Max User | TFTP Server | WLC Address |
+| ---------- | --------------- | ---------- | ---------------- | ------------- | -------- | ----------- | ----------- |
+| serverPool | 10.6.6.1        | 0.0.0.0    | 10.6.6.0         | 255.255.255.0 | 150      | 0.0.0.0     | 0.0.0.0     |
+| Counseling | 10.6.7.1        | 10.6.6.3   | 10.6.7.2         | 255.255.255.0 | 150      | 0.0.0.0     | 0.0.0.0     |
+| Office     | 10.6.4.1        | 10.6.6.3   | 10.6.4.2         | 255.255.254.0 | 300      | 0.0.0.0     | 0.0.0.0     |
+| Clinic     | 10.6.0.1        | 10.6.6.3   | 10.6.0.2         | 255.255.254.0 | 300      | 0.0.0.0     | 0.0.0.0     |
+| Visitor    | 10.6.2.1        | 10.6.6.3   | 10.6.2.2         | 255.255.254.0 | 300      | 0.0.0.0     | 0.0.0.0     |
+
+Create a new pool then *ADD
+
+!Do not save(save will override the one being worked on)
 
