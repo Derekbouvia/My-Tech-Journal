@@ -56,4 +56,4 @@ IMPORTANT - After receiving user name and password make sure to jot down passwor
  
 The conf file is the main configuration file on the Wazuh Manager and it plays an important role on the agents.
 
-This file can be found at /var/ossec/etc/ossec.conf
+* This file can be found at /var/ossec/etc/ossec.conf
