@@ -52,5 +52,8 @@ IMPORTANT - After receiving user name and password make sure to jot down passwor
  
  edit file to have 150.5 instead of 50.5
  
- # Now we need to add agent to Wazuh with preference configs
+ edit agent to specified configs
  
+The conf file is the main configuration file on the Wazuh Manager and it plays an important role on the agents.
+
+This file can be found at /var/ossec/etc/ossec.conf
