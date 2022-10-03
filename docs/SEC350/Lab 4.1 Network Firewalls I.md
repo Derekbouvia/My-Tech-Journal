@@ -214,5 +214,5 @@ This firewall needs to be configured in an open manner so the LAN clients can in
 
 The configuration should look like this after:
 
-
+![image-20221002230122793](C:\Users\derek.bouvia\AppData\Roaming\Typora\typora-user-images\image-20221002230122793.png)
 
