@@ -212,7 +212,191 @@ This firewall needs to be configured in an open manner so the LAN clients can in
 
 `save`
 
-The configuration should look like this after:
+## WAN-to-LAN
 
-![image-20221002230122793](C:\Users\derek.bouvia\AppData\Roaming\Typora\typora-user-images\image-20221002230122793.png)
+`configure`
+
+`set firewall name WAN-to-LAN default-action drop`
+
+`set firewall name WAN-to-LAN enable-default-log`
+
+`set zone-policy zone LAN from WAN firewall name WAN-to-LAN`
+
+`commit`
+
+`save`
+
+`set firewall name WAN-to-LAN rule 1 action accept`
+
+`set firewall name WAN-to-LAN rule 1 state established enable`
+
+`commit`
+
+`save`
+
+## LAN-to-DMZ Continued
+
+Since there is already a firewall set up, we ned to adjust it to allow the appropriate traffic:
+
+Configuring traffic from the LAN to web01:
+
+`set firewall name LAN-to-DMZ rule 10 action accept`
+
+`set firewall name LAN-TO-DMZ rule 10 description "LAN to web01"`
+
+`set firewall name LAN-to-DMZ rule 10 destination address 172.16.50.3`
+
+`set firewall name LAN-to-DMZ rule 10 destination port 80`
+
+`set firewall name 	LAN-to-DMZ rule 10 protocol tcp`
+
+Configuring traffic from mgmt01 to web01:
+
+`set firewall name LAN-to-DMZ rule 15 action accept`
+
+`set firewall name LAN-to-DMZ rule 15 description "mgmt01 to web01"`
+
+`set firewall name LAN-to-DMZ rule 15 source address 172.16.150.10`
+
+`set firewall name LAN-to-DMZ rule 15 destination address 172.16.50.3`
+
+`set firewall name LAN-to-DMZ rule 15 destination port 22`
+
+`set firewall name LAN-to-DMZ rule 15 protocol tcp`
+
+`commit`
+
+`save`
+
+Configure DMZ-to-LAN to allow established connections back through the firewall:
+
+`set firewall name DMZ-to-LAN rule 1 action accept`
+
+`set firewall name DMZ-to-LAN rule 1 state established enable`
+
+`commit`
+
+`save`
+
+## Configuring fw-mgmt
+
+Before starting this section you should be able to:
+
+mgmt01 should be able to ping log01
+
+mgmt01 should be able to browse to Wazuh
+
+## Create LAN and MGMT Zones on fw-mgmt
+
+Assign the proper interfaces:
+
+`set zone-policy zone LAN interface eth0`
+
+`set zone-policy zone MGMT interface eth1`
+
+Create the firewall zones
+
+`set firewall name LAN-to-MGMT default-action drop`
+
+`set firewall name LAN-to-MGMT enable-default-log`
+
+`set firewall name MGMT-to-LAN default-action drop`
+
+`set firewall name MGMT-to-LAN enable-default-log`
+
+`set zone-policy zone MGMT from LAN firewall name LAN-to-MGMT`
+
+`set zone-policy zone LAN from MGMT firewall name MGMT-to-LAN`
+
+`commit`
+
+`save`
+
+## LAN-to-MGMT
+
+Now its time to configure some of the rules for the LAN-to-MGMT firewall:
+
+`configure`
+
+Allows 514/udp from LAN to log01:
+
+`set firewall name LAN-to-MGMT rule 10 action accept`
+
+`set firewall name LAN-to-MGMT rule 10 destination address 172.16.200.10`
+
+`set firewall name LAN-to-MGMT rule 10 destination port 514`
+
+`set firewall name LAN-to-MGMT rule 10 protocol udp`
+
+`set firewall name LAN-to-MGMT rule 10 description "Allow LAN access to log01 via 514/udp`
+
+Allows 1514/tcp from LAN to log01:
+
+`set firewall name LAN-to-MGMT rule 15 action accept`
+
+`set firewall name LAN-to-MGMT rule 15 destination address 172.16.200.10`
+
+`set firewall name LAN-to-MGMT rule 15 destination port 1514`
+
+`set firewall name LAN-to-MGMT rule 15 protocol tcp`
+
+`set firewall name LAN-to-MGMT rule 15 description "Allow LAN access to log01 via 1514/tcp"`
+
+Allows 443/tcp from mgmt01 on LAN to log01:
+
+`set firewall name LAN-to-MGMT rule 20 action accept`
+
+`set firewall name LAN-to-MGMT rule 20 source address 172.16.150.10`
+
+`set firewall name LAN-to-MGMT rule 20 destination address 172.16.200.10`
+
+`set firewall name LAN-to-MGMT rule 20 destination port 443`
+
+`set firewall name LAN-to-MGMT rule 20 protocol tcp`
+
+`set firewall name LAN-to-MGMT rule 20 description "Allow mgmt01 access to log01 via 443/tcp"`
+
+Allows all ICMP to log01 from LAN:
+
+`set firewall name LAN-to-MGMT rule 25 action accept`
+
+`set firewall name LAN-to-MGMT rule 25 destination address 172.16.200.10`
+
+`set firewall name LAN-to-MGMT rule 25 protocol icmp`
+
+`set firewall name LAN-to-MGMT rule 25 description "allow ping from LAN to log01"`
+
+Allows established traffic back through the related firewall:
+
+`set firewall name LAN-to-MGMT rule 1 action accept`
+
+`set firewall name LAN-to-MGMT rule 1 state established enable`
+
+`commit`
+
+`save`
+
+## MGMT-to-LAN
+
+Now we need to configure the firewall so that it allows MGMT to initiate any connection(Similar to the LAN-to-WAN firewall)
+
+`configure`
+
+`set firewall name MGMT-to-LAN rule 1 action accept`
+
+`commit`
+
+`save`
+
+## Problems and Troubleshooting
+
+I am currently having issues with my Wazuh agent web01 not connecting 
+
+
+
+## Exporting Relevant VyOS Commands to a GitHub Repository
+
+On both firewalls, its possible to pull the configuration commands using the one-liner listed below. From this, we can copy/paste into git or right onto GitHub:
+
+`show configuration commands | grep -v "Syslog\|ntp\|login\|console\|hw-id\|loopback\|conntrack"`
 
