@@ -142,4 +142,77 @@ We can now use the command below to start debugging firewall issues so we can op
 
 `tail -f /var/log/messages | grep LAN`
 
-An effective way to check and see what ports are being used on web01 was to run a test log and sign in as an invalid user on to the box. This triggered 
+An effective way to check and see what ports are being used on web01 was to run a test log and sign in as an invalid user on to the box. This triggered 1514/tcp anf 514/udp and is in the dropped packets in the `/var/log/messages` file on fw01 which means the ports need to be opened up
+
+## DMZ-to-LAN
+
+In order to open up these ports the commands below must be ran to configure the firewall
+
+`configure`
+
+`set firewall name DMZ-to-LAN rule 10 action accept`
+
+`set firewall name DMZ-to-LAN rule 10 description "SYSLOG to log01"`
+
+`set firewall name DMZ-to-LAN rule 10 destination address 172.16.200.10`
+
+`set firewall name DMZ-to-LAN rule 10 destination port 514`
+
+`set firewall name DMZ-to-LAN rule 10 protocol udp`
+
+`set firewall name DMZ-toLAN rule 15 action accept`
+
+`set firewall name DMZ-to-LAN rule 15 description "wazuh agent to log01"`
+
+`set firewall name DMZ-to-LAN rule 15 destination address 172.16.200.10`
+
+`set firewall name DMZ-to-LAN rule 15 destination port 1514`
+
+`set firewall name DMZ-to-LAN rule 15 protocol tcp`
+
+`commit`
+
+`save`
+
+Now its important to find LAN-to-DMZ traffic that has been dropped that has a SPT=1514. This is a tcp connection so we need to allow established back through the related firewall (LAN-to-DMZ). We can check this with the command below
+
+`cat /var/log/messages | grep LAN-to-DMZ | grep "SPT=1514"`
+
+With this information we can determine what the destination address and Destination port is, and set up a returning firewall rule by using the commands below
+
+`configure`
+
+`set firewall name LAN-to-DMZ rule action accept`
+
+`set firewall name WAN-to-LAN rule 1 state established enable`
+
+`commit`
+
+`save`
+
+## LAN-to-WAN
+
+This firewall needs to be configured in an open manner so the LAN clients can initiate WAN connections. We do this by running the commands below
+
+`configure`
+
+`set firewall name LAN-to-WAN default-action drop`
+
+`set firewall name LAN-to-WAN enable-default-log`
+
+`set zone-policy zone WAN from LAN firewall name LAN-to-WAN`
+
+`commit`
+
+`save`
+
+`set firewall name LAN-to-WAN rule 1 action accept`
+
+`commit`
+
+`save`
+
+The configuration should look like this after:
+
+
+
