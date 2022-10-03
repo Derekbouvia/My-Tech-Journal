@@ -390,7 +390,7 @@ Now we need to configure the firewall so that it allows MGMT to initiate any con
 
 ## Problems and Troubleshooting
 
-I am currently having issues with my Wazuh agent web01 not connecting 
+I was having issues with my web01 box connecting to  wazuh but it ended up being the case because i had not added my rule 1 for MGMT-to- LAN
 
 
 
