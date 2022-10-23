@@ -13,9 +13,8 @@ R1(config-if)#ip nat outside
 R1(config-if)#exit
 ```
 
-commands for static NAT with example
+commands for static NAT with example:
 
 * NAT can be mapped statically so the same internal IP will always get a specific external IP. To do this you would run the following.
   ```R1(config)#ip nat inside source static 10.0.0.2 50.0.0.1```
 
-  
