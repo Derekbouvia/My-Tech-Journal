@@ -9,7 +9,7 @@ ip nat pool PoolName RANGE-START RANGE-END netmask NETMASK
 access-list 1 permit IP CLIENT-NETMASK
 ip nat inside source list 1 pool PoolName overload
 
-ip nat pool PATPool 69.69.69.69 69.69.69.69 netmask 255.0.0.0
+ip nat pool PATPool 30.0.0.120 30.0.0.120 netmask 255.0.0.0
 access-list 1 permit 10.0.0.0 0.0.0.255
 ip nat inside source list 1 pool PATPool overload
 ```
