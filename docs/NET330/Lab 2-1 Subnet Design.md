@@ -27,47 +27,70 @@ The purpose of this lab was to design a network for a school and build in packet
 
 
 
-## Cisco Switch and Router Commands
+## VLAN Setup
 
-#### To Assign and Create VLANS on Switch
+To set up VLANS that are universal across all the switches
 
-`enable`
+```
+enable
+config t
+vlan 100 name FacStaff
+vlan 110 name Student
+interface range fa 0/4-12
+switchport access vlan 100
+interface range fa 0/13-20
+switchport access vlan 110
+exit
+exit
+copy running-config startup-config
+```
 
-#### Gain access to configure type
+* For switches that require lab VLANs, run the commands below on the appropriate switch before the exit commands
 
-`switch1(config)# vlan <number>`
+```
+vlan 130 name StuLab1
+interface range fa 0/21-24
+switchport access vlan 130
 
-`switch1(config-vlan)# name <vlan-name>`
+or
 
-#### To select and name new vlan
+vlan 140 name SuLab1
+interface range fa 0/21-24
+switchport access vlan 140
+```
 
-`interface <range(if applicable)> FastEthernet 0/1(or 0/1-14 if range)`
+* To configure trunk ports on switches
+* Use as necessary for switches that connect to multiple other switches
 
-#### To select an interface witin the router that you want to deal with type:
+```
+enable
+config t
+interface fa 0/1
+switchport mode trunk
+exit
+exit
+copy
+copy running-config startup-config
+```
 
- `switchport mode access`
+## Routing Setup
 
-`switchport access vlan <vlan number>`
+In this lab the East-Core-Switch-01 acted as a router. The VLAN configuration above was run on the machine to set up routing as well as the following
 
-#### To Assign ports to these interfaces make sure to type:
+```
+interface vlan 100
+ip address 10.7.11.1 255.255.255.254
+interface vlan 110
+ip address 10.7.8.1 255.255.254.0
+interface vlan 130
+ip address 10.7.12.1 255.255.255.192
+interface vlan 140
+ip address 10.7.12.65 255.255.255.192
+```
 
-`switch# sh vlan (brief)` Either show all vlan info of show brief amount of vlan info
+**-NOTE-**
 
-#### To Enable Routing from Switch
-
-`ip routing`(turns on routing on multilayer switches)
-
-`ip address 10.25.100.1 255.255.255.0`This sets the ip address of 10.25.100.1 for vlan 100 on a routing switch)
-
-#### To Connect  Two Routers or Switches with VLANS
-
-Trunk Port. Change the adapter that is to be connected to "Trunk" using dropdown.
-
-
-
-
-
-
+Do not forget to save the running config to prevent losing any settings made
 
 
 
