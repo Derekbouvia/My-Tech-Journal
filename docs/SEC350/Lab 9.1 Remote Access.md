@@ -127,5 +127,26 @@ A new zone policy for the wg0 interface needs to be created and related to the L
 
 `save`
 
+### Remote Desktop Protocol Setup and Configuration
 
+* To set up Remote Desktop Protocol between mgmt02 and Traveler, the settings need to be updated on the management box once we finish configuring the firewall.
+
+* First, navigate to "Control Panel"
+* Then "System and Security"
+* From there "Allow remote access"
+* **To do this for the named ADM account make sure to be logged in as that user when following these steps.**
+* Open "System Properties" Window
+* Select "Allow remote Connections to this computer"
+* Click "Select Users..."
+* From here there should be a message that says "[AdminUser] already has Access"
+* If so, click "OK"
+* then "Apply"
+* then "OK" to make the specified changes
+* At this point it should be possible to Remote Desktop from Traveler as the named admin user to mgmt02.
+
+### Firewall Configurations 
+
+[**fw-mgmt**](https://github.com/Derekbouvia/My-Tech-Journal/blob/master/docs/SEC350/fw-mgmt.config.week10.txt)
+
+[**edge01**](https://github.com/Derekbouvia/My-Tech-Journal/blob/master/docs/SEC350/edge01-config.week10.txt)
 
