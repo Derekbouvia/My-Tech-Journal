@@ -1,6 +1,6 @@
 # Lab Summary
 
-In This lab we added a web application firewall to web01 adn then we tested it
+In this lab we added a web application firewall to web01 and then we tested it
 
 ## Adding software to web01
 
