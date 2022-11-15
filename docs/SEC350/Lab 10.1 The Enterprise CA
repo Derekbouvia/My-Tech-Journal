@@ -1,0 +1,30 @@
+# Lab Summary
+
+In this lab we are installing a certificate authority on the new Rocky Linux system called ca. This is so certificates can be signed and issued to nginx and http services can be migrated to https/tls
+
+### ad/dns
+
+* First thing that we need to do is Configure mgmt02 to be a Windows Domain Controller(yourname.local)
+
+* To do this We need to be logged in as an administrative user and open Server Manager
+* Next, click on add roles and features option
+* Next we need to select role based or feature based installation -> Next
+* Check the Active directory domain services box -> Next
+* 
+* Configure forward and reverse dns records for all hosts except traveler and wks1
+* For edge01 use the LAN IP
+* for fw-mgmt use the MGMT IP
+* join wks1 to the domain
+ -This will require an initially permissive set of LAN-to-MGMT rules such that the  172.16.150.0/24 subnet can initiate connections to the DC
+
+### ca
+
+* Goes on the MGMT Network with IP Address of 172.16.200.12/28
+* Name it ca-yourname
+* reset root password
+* create a named sudo user
+* put it in DNS
+* Should only be able to access the system from mgmt01 using ssh, this will require host firewall rules that restrict by source address and destination port/protocol
+* a LAN-to-MGMT rule for CA management from mgmt01
+### 
+
