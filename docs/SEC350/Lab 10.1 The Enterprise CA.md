@@ -1,3 +1,5 @@
+
+
 # Lab Summary
 
 In this lab we installed a certificate authority on the new Rocky Linux system called ca so the certificates can be signed and issued to nginx and http services can be migrated to https/tls
@@ -42,9 +44,9 @@ In this lab we installed a certificate authority on the new Rocky Linux system c
 * First we go to the yourname.local folder under the Forward Lookup Zones folder
 * Select "New Host (A or AAAA)..." which will open a window that requests the hostname, IP address, PTR records, etc. 
 
-​		**-NOTE-**
-
-​		**Make sure to specify LAN address for edge01 and MGMT address for fw-mgmt when adding the firewalls**
+		**-NOTE-**
+	
+		**Make sure to specify LAN address for edge01 and MGMT address for fw-mgmt when adding the firewalls**
 
 * Once the A records are done we then navigate to the "Reverse Lookup Zones" folder ->right-click -> add new zone.
 * Continue with defaults, and enter each of the DMZ, MGMT, and LAN network addresses as different zones 
@@ -90,6 +92,3 @@ In this lab we installed a certificate authority on the new Rocky Linux system c
 * DNS needs to be set to the new Domain Controller
 * Change hostname to ca-yourname 
 * Reboot.
-
-
-
