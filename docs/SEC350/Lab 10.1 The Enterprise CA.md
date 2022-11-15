@@ -62,11 +62,18 @@ In this lab we installed a certificate authority on the new Rocky Linux system c
 `Configure`
 
 `set firewall name LAN-to-MGMT rule 35 action accept`
+
 `set firewall name LAN-to-MGMT rule 35 description "Allow LAN addresses -> DC"`
+
 `set firewall name LAN-to-MGMT rule 35 destination address 172.16.200.11`
+
 `set firewall name LAN-to-MGMT rule 35 source address 172.16.150.0/24`
+
 `commit`
+
 `save`
+
+
 
 * Since the firewall rule has been added  we can now add wks01 to the Domain
 
