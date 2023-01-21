@@ -4,14 +4,11 @@ This week we have gone over the foundation of ethical hacking as well as setting
 
 # Passive Recon
 
-* Gathering information that is readily available to the public to obtain intelligence to a specific target this is also known as (OSINT) which means open source intelligence.
-
-
-
-# Methods
+* Gathering information that is readily available to the public to obtain intelligence to a specific target this is also known as (OSINT) which means open source intelligence. The following items are included in passive recon.
 
 * **Google Hacking:** aka "dorking" which uses search engine to execute a more specific search [Exploit Database](https://www.exploit-db.com/google-hacking-database)
 * **Shodan:** Internet of things Search Engine where you can find out what services are running or devices used just by an IP address. There are filters to find routers, ftp servers etc. There is also anonymity with this tool. [Shodan](https://www.shodan.io/)
+* **Netcraft:** This is a company that provides cybercrime disruption services. You can use their site to obtain technical reports on other websites.
 * **TheHarvester:** This method come preinstalled on Kali [TheHarvester](https://www.kali.org/tools/theharvester/) A command line utility that queries multiple search engines at one time
 * **Metagoofil:** Another Command line utility that utilizes passive recon and is used to perform metadata analysis of public files [Metagoofil](https://www.kali.org/tools/metagoofil/)
 * **IP Address Registration: ** Similar to domain registrations you can look up the owner of an IP address. You can use DNS Check [DNS Checker](https://dnschecker.org/ip-whois-lookup.php) online to get a lot of information on the organization that own the IP address space.
