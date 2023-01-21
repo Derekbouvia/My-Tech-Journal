@@ -1,6 +1,6 @@
 # Reflection
 
-This week we have gone over the foundation of ethical hacking as well as talked about passive recon and methods that can be used to do so. We have been introduced to our environment as well as become familiar with the "Rules of engagement"
+This week we have gone over the foundation of ethical hacking as well as setting up our environments. This week we also talked about the rules of ethical hacking as well as passive recon and methods that can be used to do so. (See below) 
 
 # Passive Recon
 
@@ -14,6 +14,7 @@ This week we have gone over the foundation of ethical hacking as well as talked 
 * **Shodan:** Internet of things Search Engine where you can find out what services are running or devices used just by an IP address. There are filters to find routers, ftp servers etc. There is also anonymity with this tool. [Shodan](https://www.shodan.io/)
 * **TheHarvester:** This method come preinstalled on Kali [TheHarvester](https://www.kali.org/tools/theharvester/) A command line utility that queries multiple search engines at one time
 * **Metagoofil:** Another Command line utility that utilizes passive recon and is used to perform metadata analysis of public files [Metagoofil](https://www.kali.org/tools/metagoofil/)
+* **IP Address Registration: ** Similar to domain registrations you can look up the owner of an IP address. You can use DNS Check [DNS Checker](https://dnschecker.org/ip-whois-lookup.php) online to get a lot of information on the organization that own the IP address space.
 * **Whois:** Command line utility known as whois Access to domain owner or organization information lots of personal information can be found like addresses, email, phone numbers etc. [ICANN LOOKUP](https://lookup.icann.org/en)
 
 # Kali Setup
