@@ -22,7 +22,7 @@ Instead of VPN we will be accessing our Kali system with Google remote desktop s
 
 # Google Remote Desktop
 
-[Google Remote Desktop](remotedesktop.google.come/access)
+[Google Remote Desktop](remotedesktop.google.com/access)
 
 Once linked its time to configure the virtual machine using wireguard, a VPN solution.
 
